@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Git学习笔记",
+  
+  "image": "//d1u9biwaxjngwg.cloudfront.net/cover-image-showcase/city.jpg",
+  
+  "datePublished": "2023-11-03T00:00:00Z",
+  "dateModified": "2023-11-03T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Firstname Lastname",
+    
+    "image": "https://www.gravatar.com/avatar/d09dc2d7aa5c467519e8af89f7b3d94c"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/goody-good.github.io\/2023\/11\/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hugo tranquilpeak theme",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gravatar.com/avatar/d09dc2d7aa5c467519e8af89f7b3d94c"
+    }
+    
+  },
+  "description": "本学习笔记概括了关于Git和Github的基本知识，以及它们的重要性和使用方法。以下是学习笔记的详细内容。\n",
+  "keywords": ["git"]
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.102.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Firstname Lastname">
+<meta name="keywords" content="git">
+<meta name="description" content="本学习笔记概括了关于Git和Github的基本知识，以及它们的重要性和使用方法。以下是学习笔记的详细内容。">
+
+
+<meta property="og:description" content="本学习笔记概括了关于Git和Github的基本知识，以及它们的重要性和使用方法。以下是学习笔记的详细内容。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git学习笔记">
+<meta name="twitter:title" content="Git学习笔记">
+<meta property="og:url" content="https://goody-good.github.io/2023/11/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+<meta property="twitter:url" content="https://goody-good.github.io/2023/11/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+<meta property="og:site_name" content="Hugo tranquilpeak theme">
+<meta property="og:description" content="本学习笔记概括了关于Git和Github的基本知识，以及它们的重要性和使用方法。以下是学习笔记的详细内容。">
+<meta name="twitter:description" content="本学习笔记概括了关于Git和Github的基本知识，以及它们的重要性和使用方法。以下是学习笔记的详细内容。">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2023-11-03T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2023-11-03T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="tranquilpeak">
+    
+      <meta property="article:section" content="features">
+    
+  
+  
+    
+      <meta property="article:tag" content="cover image">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/d09dc2d7aa5c467519e8af89f7b3d94c?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/d09dc2d7aa5c467519e8af89f7b3d94c?s=640">
+
+
+
+
+  <meta property="og:image" content="//d1u9biwaxjngwg.cloudfront.net/cover-image-showcase/city.jpg">
+  <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/cover-image-showcase/city.jpg">
+
+
+  <meta property="og:image" content="//www.opensourceforu.com/wp-content/uploads/2016/11/GIT-on-Windows.jpg">
+  <meta property="twitter:image" content="//www.opensourceforu.com/wp-content/uploads/2016/11/GIT-on-Windows.jpg">
+
+
+    <title>Git学习笔记</title>
+
+    <link rel="icon" href="https://goody-good.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://goody-good.github.io/2023/11/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://goody-good.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://goody-good.github.io/" aria-label="Go to homepage">Hugo tranquilpeak theme</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://goody-good.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/d09dc2d7aa5c467519e8af89f7b3d94c?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://goody-good.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/d09dc2d7aa5c467519e8af89f7b3d94c?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Firstname Lastname</h4>
+        
+          <h5 class="sidebar-profile-bio">Super bio with markdown support <strong>COOL</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://goody-good.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://goody-good.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://goody-good.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://goody-good.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://goody-good.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/kakawait" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://stackoverflow.com/users/636472/kakawait" target="_blank" rel="noopener" title="Stack Overflow">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-stack-overflow" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://goody-good.github.io/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//d1u9biwaxjngwg.cloudfront.net/cover-image-showcase/city.jpg')"
+       data-behavior="4">
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      Git学习笔记
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-11-03T00:00:00Z">
+        
+  November 3, 2023
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://goody-good.github.io/categories/tranquilpeak">tranquilpeak</a>, 
+    
+      <a class="category-link" href="https://goody-good.github.io/categories/features">features</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>本学习笔记概括了关于Git和Github的基本知识，以及它们的重要性和使用方法。以下是学习笔记的详细内容。</p>
+<p>​		Git 是一个免费开源的分布式版本控制系统。它使用一个特殊的叫做仓库（repository）的数据库来记录文件的变化。仓库中的每个文件都有一个完整的版本历史记录。可以看到谁在什么时间修改了哪些文件的哪些内容，在需要的时候也可以将文件恢复到之前的某一个版本。如果没有版本控制系统，那么我们就只能通过最原始的方式来管理文件，比如将文件按照日期备份出多个副本，或者将整个项目的每个版本都保存在不同的文件夹中。而当很多项目成员同时在修改同一个项目的时候，就需要手工来合并两个人的修改内容。这样不但低效，管理起来也非常麻烦。版本控制系统就是为了解决这些问题而诞生的。
+​		有了版本控制系统，我们就可以跟踪每个文件的变化，让项目成员之间的协作更加高效。目前世界上最流行的版本控制系统有两种，一种是集中式版本控制系统，比如SVN，CVS等等。另一种是分布式版本控制系统，比如GID， mercurial 等等。集中式版本控制系统的工作流程就像下面这张图。
+一样。所有的文件都保存在中央服务器上，每个人的电脑上只保存了一个副本。当你需要修改文件的时候，首先要从中央服务器上下载最新的版本。然后添加你想要的修改内容，修改完成之后再上传回中央服务器。集中式版本控制系统的优点是使用起来非常简单，只需要从中央服务器上下载最新的。
+版本。修改完成之后再上传到中央服务器上就可以了，不需要考虑其他的问题。但是它的缺点也非常明显，就是中央服务器的单点故障问题。如果中央服务器出现故障或者网络连接出现问题，那么所有人都无法工作了，只能等待中央服务器或者网络恢复正常。</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TD
+A[Server]==&gt;B[Client]
+A==&gt;C[Client]
+A==&gt;D[Client]
+</code></pre><p>而分布式版本控制系统就没有这个问题。像下面这张图一样，每个人的电脑上都有一个完整的版本库，所以我们可以在本地进行修改，不需要考虑网络问题。这样即使中央服务器出现故障，我们也可以继续工作。当需要将我们的修改内容分享给其他人的时候,只需要将仓库互相同步一下就可以了。
+因为免费开源、速度快、功能强大、支持离线工作以及强大的分支管理等特性， Git 已经成为了目前世界上最先进的分布式版本控制系统。世界上超过 90% 的开源项目都在使用 Git 进行版本控制， Git Hub、GitLab、 Gitee 等网站上托管的开源项目也都是使用 Git 来进行版本管理的。对于开发者来说掌握 Git 可以说是必不可少的技能。而这正是这套课程要教给大家的。这套课程的终止是让大家用最少的时间掌握 Git 的使用，手把手带着大家入门，所以挑选了 Git 中最常用的命令来讲解，确保大家听完这门课程之后一定可以开始上手使用 Git 了。
+等到大家对这些常用的命令都熟练掌握之后，再来继续学习一些其他 Git 的高级用法，就不会觉得太难了，这也是比较推荐的学习方式。
+本期内容就到这里，我们我们下期再见。</p>
+<h2 id="git-的安装和配置">Git 的安装和配置</h2>
+<p>首先来到 Git 的官网，在这里我们可以下载不同操作系统所对应的安装文件，在 download 这里。安装的过程也非常简单，大家可以自己安装一下。安装完成之后就可以在终端中输入<code>git -v</code> 命令。
+如果能够看到版本信息，那么就说明已经安装成功了。终端的打开方式在 Mac 中是按下 command 和空格键，然后输入 Terminal 就可以找到终端了。或者也可以点击启动台中的终端图标来打开终端。Windows 的话，安装完 Git 之后会自动安装Git Bash。在鼠标右键的弹出菜单中可以找到 Git bash Here 或者在终端中打开都可以。</p>
+<p>Git 的使用方式主要有三种：命令行，图形化界面和 IDE 插件。命令行的方式是最基本和最常用的方式，就是在终端中输入 Git 命令的方式来使用Git。图形化界面也叫GUI，就是通过一些专用的图形化工具软件来使用Git。
+在 Git 官网上也可以找到常用的 GUI 工具，直接下载安装就可以了，那在这个位置。IDE 插件就是在常用的IDEA或者 Vscode 这些IDE工具中，通过插件或者扩展的方式来使用git，这种方式也是非常用的，比如 Vscode 就默认集成了源码管理器。
+这里推荐大家使用命令行，这样不但可以加深对Git的理解，还可以提高我们的工作效率。今后的课程主要也是以命令行的方式来讲解。</p>
+<p>为了区分 Linux 操作系统中的命令， Git 的所有命令都以 git 开头，后面跟着具体的命令，比如 <code>git init</code> 就是初始化一个仓库。 Git 的命令非常多，但是大家也不用担心，这里为大家准备了一个 Git 常用命令的汇总表，可以下载下来随时查看。为了让大家更加直观的看到各种命令的执行效果，我们的课程中对终端进行了一些配置。蓝色背景的部分是当前所在目录的位置。波浪线表示的是用户的主目录。
+比如我们现在所在的目录就是主目录下的directory。这个目录下绿色背景的部分是大家需要重点关注的部分，这里可以显示 Git 的分支名称和当前仓库的状态等信息。那这个也不是必须的，不配置的话也完全不会影响 Git 的使用，如果大家感兴趣的话，可以自己配置一下。</p>
+<p>在开始使用 Git 之前，第一步就是先使用<code>git config</code> 命令配置一下用户名和邮箱，这样在提交的时候才能够识别出来是谁提交的内容。这里的 <code>--global</code> 参数表示的是全局配置，也就是说这个配置对所有的 Git 仓库都有效，如果不加上这个参数，就表示指对当前的 Git 仓库有效。还有一个就是<code>-- system</code> 参数，表示的是系统级别的配置，也就是说对所有的用户都有效。一般不会使用system，那我们使用最多的也就是这个 global 参数。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%871.png" alt="图片1"></p>
+<p>这里因为用户名中间存在空格，所以需要使用算引号把它括起来，如果没有空格的话，这个双引号是可以省略的。</p>
+<p>配置完用户名之后，我们再来配置一下邮箱，那因为邮箱中间是没有空格的，所以就可以省略掉这个双引号。这里用户名和邮箱可以根据自己的情况来编写。需要注意的是，这两个命令只需要执行一次，如果大家之前已经执行过了，那么这一步是可以省略的。我们还可以使用<code>git config --global credential.helper store</code>这个命令来保存用户名和密码，这样就不用每次都输入了。我们也可以使用<code>git config --global --list</code>这个命令来查看 Git 的配置信息，可以看到刚刚我们配置的用户名和邮箱。配置完成之后，我们就可以使用 Git 来管理我们的代码了。</p>
+<h2 id="新建本地版本库">新建本地版本库</h2>
+<p>版本库又叫仓库，英文名叫repository，简称Repo，大家可以把仓库理解成一个目录，这个目录里面所有的文件都可以被 git 管理起来。每个文件的修改、删除、添加等操作 git 都能够跟踪到，以便任何时候都可以最终历史或者还原到之前的某一个版本。创建一个仓库非常的简单，只需要把一个目录变成 Git 可以管理的仓库就可以了。一般来说可以通过两种方式来创建一个仓库。
+一种是在自己电脑本地直接创建一个仓库，另一种是从远程服务器上克隆一个已经存在的仓库。首先需要找到一个合适的位置来创建一个空目录，比如这里我们就创建一个叫做 <code>learn-git</code> 的目录，后面所有操作也都会在任务目录下进行。
+然后，输入<code> git init</code> 就可以创建一个仓库了。注意看一下这个命令的回显，它提示我们已经初始化。
+了一个空的仓库。在 <code>learn-git/.git</code> 这个位置，那大家还可以看到命令行前面的提示符部分也已经发生了变化。在蓝色背景的当前位置后面多了一个绿色背景的main。
+这个 main 就是当前所在分支的名称，表示当前这个目录已经是一个 Git 的管理起来的仓库。然后我们来看一下这个目录下到底有没有一个叫.git 的目录，输入 <code>ls</code> 命令来查看一下。(<code>ls</code>是Linux的命令，Windows 对应的是<code>dir</code>)这里需要注意一下这个.git 目录是一个隐藏目录。使用<code>ls</code> 命令直接来查看的话是看不到的，需要在后面加上一个<code>-a</code>的参数来显示所有文件，包括隐藏文件(Windows 对应<code>dir /a</code>)。那再来看一下，可以看到这个目录下确实是有一个. git 目录，说明 git 仓库已经创建成功了。.git 这个目录存放了 Git 仓库的所有数据，我们可以进来<code>cd .git</code>看一下<code>ls -altr</code>。可以看到这里面有很多的文件和目录，这些文件和目录都是 git 仓库的重要组成部分，不要随意删除或者修改这些文件的内容，否则会破坏 git 仓库。这也是为什么要把这个目录隐藏起来的原因。</p>
+<table>
+<thead>
+<tr>
+<th><code>cd ..</code></th>
+<th>作用是退回上一级目录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rm  -rf  要删除的文件名或目录</code></td>
+<td>删除当前目录下的所有文件及目录，并且是直接删除，无需逐一确认命令行为</td>
+</tr>
+<tr>
+<td><code>rm  -rf   test/</code></td>
+<td>删除目录 test，不管该目录下是否有子目录或文件，都直接删除</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><code>rm [options] name...</code></th>
+<th>Linux rm（英文全拼：remove）命令用于删除一个文件或者目录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-i</td>
+<td>删除前逐一询问确认</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>即使原档案属性设为唯读，亦直接删除，无需逐一确认。</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>将目录及以下之档案亦逐一删除</td>
+</tr>
+</tbody>
+</table>
+<p>比如如果把这个目录删除掉的话，那这个仓库也会被删除掉。可以看到刚刚绿色背景的 main 已经消失了，表示当前这个目录已经不再是一个 git 仓库，而就是一个普通的文件目录了。 git init 后面还可以指定目录的名称，如果指定了，就会在当前目录下面创建一个新的目录作为git的仓库。比如我们可以创建一个叫做。<code>my-repo</code>的 Git 仓库。
+注意这里有一点小区别，刚刚在执行 git init 命令的时候，是在 learn-git 目录下生成的.git，而现在加上参数之后，就会在 learn-git 后面的 my repo 里面生成一个.Git，也就是说 my-repo 才是我们刚刚创建的仓库。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%872.png" alt="图片2">我们来看一下这个目录下，可以看到这个绿色的分支提示又回来了，而且这个目录下面确实也生成了一个.git 的仓库目录。除了可以使用 git init 来创建一个仓库之外，我们刚刚还提到了还有另外一种方式，也可以创建一个Git仓库，就是使用 git 克隆命令来从GitHub 或者 gittee 这种远程服务器上来克隆一个已经存在的仓库。
+下面我们就来看一下远程仓库，这部分内容我们会在后面详细讲解，这里我们就先来简单了解一下，还有这样一种创建仓库的方式就可以了。这边已经提前在 Git Hub 上建好了一个远程仓库，直接使用这个地址来试一下，直接在命令行中输入git clone，后面加上仓库的地址，然后回车。
+可以看到除了刚刚在本地生成的 my repo 这个仓库以外，又多了一个 remote-repo 这样的目录。我们进来看一下，可以看到它也是显示了一个绿色的 main 分支。然后我们再<code>ls -a</code> 来看一下。
+这里面也是有一个.git 的目录，表示它确实是一个 Git 仓库。本节课内容就到这里，我们下期再见。</p>
+<h2 id="git-的工作区域和文件的状态">Git 的工作区域和文件的状态</h2>
+<p>Git 的本地数据管理分为三个区域，分别是工作区、暂存区和本地仓库。
+工作区英文名叫working directory，也叫工作目录或者本地工作目录，就是我们自己电脑上的目录，大家在资源管理器里面能够看到的文件夹就是工作区。暂存区，英文名叫 staging area，也称为索引index，是一种临时存储区域，用于保存即将提交到 Git 仓库的修改内容。暂存区是在 Git 进行版本控制时非常重要的一个区域。本地仓库就是我们上一节课通过<code> git init</code> 命令创建的那个仓库，它包含了完整的项目历史和元数据，是 Git 存储代码和版本信息的主要位置。简单来说，工作区就是我们实际操作的目录。暂存区就是一个中间区域，用于临时存放即将提交的修改内容。本地仓库就是 Git 存储代码和版本信息的主要位置。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%873.png" alt="图片3">当你修改完工作区的文件之后，需要将它们添加到暂存区，然后再将暂存区的修改内容提交到本地仓库中。这个过程中我们可以使用 git 提供的命令来查看、比较或者撤销修改内容，来保证版本控制的准确性和完整性。举个形象一点的例子来说明一下这三个区域。
+我们可以把仓库理解成工厂里面的仓库，这个仓库里面有很多的货物和产品。这些货物和产品就是我们的文件，比如说我们的代码文件、文本文件、图片文件等等。工作区就是生产这些货物的车间，对我们的货物进行生产、加工和修改。
+车间生产完这些产品之后，需要运送到仓库里面保管起来，那车间和仓库之间就需要有一个运输工具，比如我们使用小货车来运输的话，那这个小货车里面就是暂存区。车间生产完产品之后，把产品放到小货车上，然后运输到仓库里面保存起来。联系到工作中，当我们的代码完成了一个阶段，想存档备份的时候，就可以把这个版本放到本地仓库里面保存起来。在版本控制系统中，这个保存到仓库中的过程就叫做提交。但是如果我们每次修改文件之后，都需要进行一次提交操作的话，会比较麻烦。所以 git 给我们提供了一种方式，也就是可以将修改的文件先添加到暂存区中，然后再把所有暂存区中的文件统一执行一下提交操作。
+联想到我们刚刚的例子的话，就是我们车间生产完货物之后，并不是每次都需要运送到仓库里面，而是先把这些货物放到小货车上，然后一次性的运送到仓库里面保存起来。相应的， git 中的文件也存在几种状态，分别是未跟踪、未修改、已暂存可以提交、没跟踪就是我们新创建的还没有被 git 管理起来的文件。未修改就是我们已经被 git 管理起来，但是文件的内容没有变化，还没有被修改过。已修改就是我们已经修改了的文件，但是还没有添加到暂存区里面。已暂存就是我们修改之后，并且已经添加到暂存区内的文件。联想到刚刚的例子，也就是已经放到小货车里面的货物。</p>
+<h2 id="将文件添加到仓库里">将文件添加到仓库里</h2>
+<p>涉及到下面这几个命令。</p>
+<table>
+<thead>
+<tr>
+<th>git init</th>
+<th>创建仓库</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git status</td>
+<td>查看仓库状态</td>
+</tr>
+<tr>
+<td>git add</td>
+<td>添加到暂存区</td>
+</tr>
+<tr>
+<td>git commit</td>
+<td>提交</td>
+</tr>
+<tr>
+<td>git</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>首先来看一下第一个命令 <code>git status</code> 。status这个单词本身就是状态的意思，那这个命令的作用也就是可以用来查看当前仓库的状态，比如可以查看当前仓库处在哪个分支，有哪些文件，以及这些文件当前处在怎样的一个状态。因为现在我们还没有执行过任何提交操作，所以还看不出来什么。等会儿我们新建一个文件之后，再来看一下这个命令的输出。那现在大家可以看到我们当前处在main分支。大家可能会看到自己的分支名称是 master 而不是main。这是由于 Git 版本不同导致的。不用担心，这个并不影响我们的学习。等到后面学习分支的时候，再来详细讲一下这个问题。</p>
+<p>首先来创建一个文件，创建文件有很多种方式，这里大家可以使用任何自己熟悉的方式来创建文件，比如使用 vim 或者 vscode 都可以。这里我们直接使用 Linux 下的一个 echo 命令，将回显的内容输出到一个文件里面。比如我们就输出一个“这是第一个文件”，可以看到本地已经多了一个file1.txt 文件。来看一下这个文件里面的内容，可以看到刚刚在 echo 命令后面，我们输入的内容已经被写入到这个文件里面了。再来看一下仓库的状态，可以看到命令行的回显中比刚才多了一个红色的文件，就是刚刚新建的文件。
+再来回忆一下之前讲过的文件的状态，哪一节这个文件现在就是处在一个未被跟踪的状态。接下来就可以使用 <code>git add</code> 的命令来把文件放到小货车里面。<code> git add</code> 这个命令的作用就是将文件添加到暂存区，等待后续的提交操作。
+再来看一下仓库的状态，可以看到刚刚红色的file.txt 已经变成了绿色，表示这个文件现在已经被添加到了暂存区，等待被提交。那细心的同学会发现，命令提示符里面也多了一个加号，表示我们的仓库中存在已经修改了，但是没有提交的文件。下面括号里面还有这样一行提示，它告诉我们可以使用这样的命令来把添加到暂存去的文件再取消暂存，也就是可以把刚刚放到小货车里面的货物再拿回来。那这里就不演示了，感兴趣的同学可以课下自己尝试一下。
+接下来看一下如何将文件提交到仓库中，这就会用到下一个命令， <code>git commit</code>。commit就是提交的意思，我们的文件只有被提交到仓库中才算真正的被保管起来。这里有一个需要注意的地方，就是 <code>git commit</code> 这个命令只会提交暂存区中的文件，而不会提交工作区中的其他文件。比如我们现在再来创建一个新的文件，然后再来看一下仓库的状态，可以看到刚刚创建的这个 file 2 是红色的未跟踪的状态。那接下来再提交一下，大家注意， <code>git commit</code> 这个命令在提交的时候需要使用<code>-m</code> 参数来指定提交的信息。
+这个信息会被记录到仓库中。如果不指定<code>-m</code> 这个参数，那么 <code>git commit</code> 命令会进入一个交互式的界面，默认会使用 Vim 来编辑提交信息。提交完成之后，再来看一下仓库的状态，可以看到刚刚绿色的 file .txt已经不见了。这是因为我们已经把 file 一提交到仓库里面保管起来。 git 在提交的时候只会提交暂存区中的文件，而不会提交工作区中的其他文件，比如现在这个file2就是没有添加到暂存区。
+所以在提交的时候也是不会被提交到仓库里面的，这是很多同学初学的时候容易搞错的地方。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%874.png" alt="图片4">等到我们学习远程仓库的时候，我会再来演示一下，到时候就可以直观的看到本地仓库的哪些文件的哪些内容被提交到了远程仓库里面，那大家的理解也会更加深刻一点。
+<code>git add</code> 的命令还可以使用通配符来添加多个文件，为了演示通配符的使用，我们再来多添加几个文件。文件内容我就简单写成file 3，然后再来添加一个 file 4。然后我们再添加一个不是以txt结尾的文件。现在可以看到仓库里面有 4 个 txt文件和一个以 sh 结尾的shell脚本文件。
+当执行 git status 之后，可以看到除了 file1已经被仓库保管起来之外，下面 4 个新建的文件都处于一个未跟踪。的状态。可以使用 <code>git add *.txt </code>来把所有以txt结尾的文件都添加到暂存区里面。
+再来看一下状态，可以看到所有以txt结尾的三个文件都已经被添加到了暂存区，而 file5 .sh 这个文件因为不是以 txt结尾，所以没有被添加到暂存区里面。
+除了通配符之外，<code>git add</code>命令还可以接受文件夹作为参数，比如想要添加所有文件的话，可以使用 <code>git add .</code>这个命令来把当前文件夹下的所有文件都添加到暂存区里面，这里的点就表示当前目录。然后再来看一下当前仓库的状态，可以看到所有文件都已经被添加到了暂存区，那再来提交一下。这次我们不输入<code>-m</code> 参数， Git 就会自动的进入到一个交互式的界面，默认会使用 vim来编辑提交信息。 vim是一个非常强大的文本编辑器，时间关系这里就不详细介绍了。</p>
+<p>可以使用方向键来移动光标，使用 i 键进入编辑模式，输入提交信息，然后 ESC 键回到命令模式，输入<code>:wq</code> 保存退出提交就完成了。再来看一下状态，可以看到它提示我们所有的文件都已经提交完成了。那现在仓库中已经有了两次提交，可以使用 <code>git log</code> 命令来查看提交记录，可以看到我们执行了两次提交，每次提交都有一个唯一的提交ID，就是 commit 后面这个 16 进制的字符串，还有每次提交的作者和邮箱，以及提交的时间和刚刚提交时编写的注释信息等的内容。这里的名字和邮箱就是我们使用 <code>git config</code> 命令配置的。<code>git log</code>后面还可以接受一些参数，比如说可以使用 <code>git log --oneline</code> 来查看简洁的提交记录，这样就只显示每次提交的ID 和提交信息了。</p>
+<h2 id="git-reset-命令撤销">git reset 命令撤销</h2>
+<p>在日常开发的时候，我们经常会需要撤销之前的一些修改内容，或者回退到之前的某一个版本，这个时候 <code>git reset</code> 这个命令就派上用场了。 reset 命令用于回退版本，可以退回到之前的某一个提交的状态。 reset 命令有三种用法，也就是后面可以加上三个不同类型的参数，分别是soft， hard 和mixed，也就是软的、硬的和混合的。 soft 参数表示回退到某一个版本，并且保留工作区和暂存区的所有修改内容。hard 参数表示回退到某一个版本，并且丢弃工作区和暂存缺的所有修改内容。
+mixed 这个参数就是介于 soft 和 hard 这两个参数之间，它表示回退到某一个版本，并且只保留工作区域的修改内容，而丢弃暂存区域的修改内容。 mixed 也是 reset 命令的默认参数。来看一下这张图，这张图就演示了这三种参数的区别。可以看到，如果使用 soft 参数，那么工作区和暂存区的内容都不会被清空。而如果使用 hard 参数，那么工作区和暂存区的内容都会被清空。如果使用 mixed 的参数，那么工作区的内容会被保留，而暂存区域的内容会被清空。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>工作区</th>
+<th>暂存区</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git reset --soft </code></td>
+<td>保留</td>
+<td>保留</td>
+</tr>
+<tr>
+<td><code>git reset --hard</code></td>
+<td>失去</td>
+<td>失去</td>
+</tr>
+<tr>
+<td><code>git reset --mixed</code></td>
+<td>保留</td>
+<td>失去</td>
+</tr>
+</tbody>
+</table>
+<p>我们需要根据不同的场景来选择使用不同的参数，这样解释可能有一点抽象，下面就来看一个实际的例子。首先来新建一个仓库，并且添加几次提交内容，这里为了方便大家观看，还是一个文件一次提交，然后内容也是使用最简单的123来表示。
+这样我们就有了三次提交。来使用 <code>git log</code> 查看一下提交历史，然后这个时候如果我们想要回退到上一个版本的话，就可以使用 <code>git reset</code> 命令。为了方便演示，我们再打开一个终端，然后把这个仓库目录复制三份，分别来执行三种不同的参数。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%875.png" alt="图片5"></p>
+<p>首先我们来看一下 soft 参数，直接在命令行输入 <code>git reset -soft </code>后面加上要回退的版本ID 就可以了。回车之后再来使用 git log 查看一下提交历史，可以看到现在提交历史只有两次了， head指针也指向了第二个版本。那再来看一下工作区和暂存区的内容，使用<code>ls</code>命令查看一下工作区的内容，可以看到 file3 这个文件还在，<code>cat file3.txt</code> 命令查看一下 file3 的内容也是没有问题的。然后再来看一下暂存区的内容<code>git ls-files</code>， file3 在暂存区里面也是存在的。
+再来看一下仓库的状态<code>git status</code>。那提示我们 fail3 是一个新文件，这里稍微解释一下。因为我们使用的是 soft 参数，所以回退到上一个版本的时候，工作区和暂存区的内容都不会被清空，所以 file 3 这个文件还是存在的。但是因为我们回退到了上一个版本，也就是第二个版本，而 file 3 这个文件是在第三个版本才添加的，所以对于第二个版本来说，这个 file 3 文件就是一个新文件，这个时候我们就可以修改一下 file 3 的内容，然后重新添加暂存和提交一下就可以了，这里就不再演示了。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%876.png" alt="图片6">那接下来看一下 hard 参数，也是回退到上一个版本<code>cd repo-hard</code>  <code>git reset --hard HEAD^</code>，这次我们使用 head 加上尖角号来表示上一个版本。回车之后再使用<code> git log</code> 查看一下提交历史，可以看到现在提交历史也是只有两次了，这个和 soft 参数是一样的。再来看一下工作区和暂存区的内容。
+<code>ls</code> 命令查看一下工作区的内容，能够看到 file 3 这个文件已经不存在了，再来查看一下暂存区的内容<code>git ls-files</code>，可以看到暂存区里面也没有 file 3 这个文件了。就是说如果我们使用 hard 参数，那么回退到上一个版本的时候，工作区和暂存区的内容都会被清空。</p>
+<p>最后再来看一下默认的 mixed 参数，我们切换到第4个终端，然后进入到仓库目录里面<code>cd learn-git</code>  <code>cd repo-mixed</code>，同样也是回退到上一个版本。这次我们不加任何参数，直接输入 <code>git reset</code>。回车之后再来使用<code> git log</code> 查看一下提交历史，可以看到现在提交历史也是只有两次。再来看一下工作区和暂存区的状态，可以看到 file3 这个文件还是存在的，<code> cat file3.txt</code>命令查看内容也是没有问题的。然后再查看一下暂存区的内容，可以看到暂存区里面已经没有 file 3 这个文件了，那这就是这三个参数的使用区别。
+在使用场景方面， soft 和 mixed 的作用基本相似，区别就在于是否保留暂存区的内容。一般来说，当我们连续提交了多个版本，但是又觉得这些提交没有太大意义，可以合并成一个版本的时候，就可以通过这两个参数来进行回退，之后再重新提交。那它们主要的区别就是在重新提交之前，混合模式需要执行一下 <code>git add</code> 的操作来将变动的内容重新添加到暂存区，而 soft 模式就不需要了，因为暂存区并没有被清空。而 hard 参数的使用场景则一般是你真的要放弃目前本地的所有修改内容的时候，那建议大家谨慎使用 hard 这个参数，因为它会删除这两个版本之间的工作区和暂存区的所有修改内容。但是如果不小心误操作的话，其实也不用太担心， git 中的所有操作都是可以回溯的。
+可以使用 <code>git reflog </code>命令来查看一下我们操作的历史记录，然后找到误操作之前的版本号，然后再使用 git reset 命令来回退到这个版本就可以了。可以看到我们又回到了第三次提交这个版本。以上就是 git reset 命令的详细讲解。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%877.png" alt="图片7"></p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%878.png" alt="图片8"></p>
+<h2 id="git-diff命令">git diff命令</h2>
+<p><code> git diff</code> 可以用来查看文件在工作区、暂存区以及版本库之间的差异。它还可以查看文件在两个特定版本之间的差异，或者文件在两个分支之间的差异。那平时我们开发的时候更多的是使用一些图形化的工具，但是了解一下 <code>git diff </code>这个命令还是很有必要的，因为有的时候我们需要在一些没有图形化工具的服务器上来使用git 。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%879.png" alt="图片9"></p>
+<p>后面也会介绍一下如何在 vscode 这些开发工具以及一些图形化的GUI工具中来查看版本之间的差异内容。<code> git diff</code> 后面如果什么都不加的话，会默认比较的是工作区和暂存区之间的差异内容，它会显示发生更改的文件以及更改的详细信息。下面就来演示一下。
+我们还是使用上节课创建的仓库，这个仓库目前有三次提交，每次提交都新增了一个文件。比如第一次提交新增了一个 file1.txt，<code>cat file1.txt</code> 里面是 3 个1，那第二次新增了一个 file2，第三次新增了一个 file3，非常的简单。然后来修改一下 file3 这个文件<code>vi file3.txt</code>，把文件内容改成，然后保存退出。能够看到现在终端的命令提示符已经变成了黄色，表示我们修改了一些仓库中的内容。那现在我们使用 <code>git diff</code> 命令来查看一下，这就是 ski diff 命令的输出。第一行提示了我们发生变更的文件，第二行稍微解释一下， git 会将文件的内容使用哈希算法生成一个 40 位的哈希值，这里只显示了哈希值的前 7 位，后面的 100644 表示的是文件的权限。再往下就是刚刚修改的内容了，红色的文字表示删除的内容，绿色的是刚刚添加的内容。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8710.png" alt="图片10"></p>
+<p>现在比较的是工作区和暂存区之间的差异，因为我们修改的内容还没有被添加到暂存区，那我们来添加一下，然后再来使用 <code>git diff</code> 看一下输出结果，可以看到没有任何内容了，表示我们的工作区和暂存区的内容是相同的。
+除了比较工作区和暂存区之间的差异以外，我们还可以比较工作区和版本库之间的差异， <code>get diff HEAD</code>就可以了。比如我们现在添加的内容还没有提交到仓库里面，那现在这个参与内容就应该是存在的，刚刚我们修改的内容又被显示出来了，这是因为我们还没有执行提交操作，所以工作区和版本库的内容是不相同的。我们还可以比较暂存区和版本库之间的差异。方法就是<code>git diff --cached</code>这个参数，可以看到输出内容是相同的，那我们现在来提交一下<code>git commit -m &quot;commit4&quot;</code>，然后再来看一下<code> get diff</code>的内容。
+可以看到没有任何输出了，表示我们的工作区、暂存区和版本库的内容是一致的。 git diff 命令除了可以比较工作区、暂存区和版本库之间的差异以外，还可以用来比较两个特定版本之间的差异，用法就是在后面加上想要比较的两个版本的提交ID就可以了。先来看一下当前仓库的提交记录<code>git log --oneline</code>，为了方便演示，这里又开了一个新的终端，<code>git diff</code>后面加上两次版本的提交ID，就可以比较这两个版本之间的差异内容。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8711.png" alt="图片11"></p>
+<p>除了使用提交 ID 之外，还可以使用 HEAD来表示当前分支的最新提交。HEAD 是 Git 中的一个非常重要的概念，它指向分支的最新提交节点，在后面的学习中会经常的用到。我们也可以使用某一个版本的提交 ID 和 head 来进行比较，比如我们使用上一个提交的 ID 和 head 来进行比较的话。就是 <code>git diff</code> 第一个版本的提交ID。
+后面加上 head 表示第二个版本，然后回车就可以了。当然如果每次都要查看提交 ID 的话，确实有些麻烦，那最经常用到的就是比较当前版本和上一个版本之间的差异。这里 Git 也为我们提供了一个更加简便的方式，就是我们可以使用<code>HEAD~</code>来表示上一个版本，那刚刚的比较就可以替换成<code>git diff HEAD~ HEAD</code>，可以看到结果是一样的。那除了使用波浪线以外，尖角号<code>HEAD^</code>也是可以的，我们还可以在波浪线前面加上具体的数字。比如<code>HEAD~2</code>表示 HEAD之前的两个版本。比如如果我们加上<code>HEAD~3</code>的话，就是提交之前的第三个版本，也就是这一个版本。那要看到除了我们刚刚的修改以外，上一个版本的差异内容也被显示出来了。 <code>git diff </code>后面还可以加上文件名，这样就只会查看这个文件的差异内容。比如我们在刚刚的命令后面加上 file3<code>git diff HEAD~3 HEAD file3.txt</code>，那这样就只会查看 file3 的差异内容，那刚刚 file2 的差异内容就不显示了。
+<code>git diff</code> 还可以查看两个分支之间的差异，直接加上两个分支名就可以了，这个等到我们学习分支的时候再来详细讲解。</p>
+<h2 id="从版本库中删除文件">从版本库中删除文件</h2>
+<p>删除文件有两种常用的方式，先来看第一种就是直接删除文件之后提交。首先来看一下本地仓库中的文件内容，比如这里我们就来删除 file1.txt 这个文件。首先需要使用 <code>rm</code> 命令在本地工作区中删除文件，执行<code>rm file1.txt</code>。注意这里的 <code>rm</code> 并不是 Git 的命令，而是 Linux 操作系统的命令。如果大家使用 Windows 操作系统的话，可以直接将文件删除到回收站里面就可以了。
+然后我们来看一下文件是否被删除了，可以看到 file1.txt已经被删除掉了。然后再来看一下仓库的状态，这里它提示我们 file1.txt已经被删除了。那这一行它还提示我们需要使用 <code>git add</code> 来更新暂存区。注意，这里有点不太好理解，很多同学可能会有些疑惑，我们不是要删除文件吗？为什么还要添加到暂存区？因为我们刚刚只是在本地工作区删除了文件，而暂存区的文件还没有被删除。
+可以使用 <code>git ls-files</code> 这个命令来查看暂存区中的内容。
+可以看到这个 file1.txt仍然在暂存区中，并没有被删除掉。那这里的 <code>git add </code>命令大家就可以理解成，我们要告诉 git 要删除这个文件，你可以先把这个文件从暂存区中也删除掉。那我们来执行一下。
+可以使用 <code>git add file1.txt</code>，也可以直接使用 <code>git add .</code>。执行完之后再来查看一下暂存区中文件的内容，可以看到 file1.ttxt已经不在了，那就从暂存区中也把 file1.txt删除掉了。那这种方法还是有点麻烦的，先要从工作区中删除文件，然后再更新暂存区再提交。那 git 也为我们提供了另外一个方法，就是可以使用<code> git rm</code> 这个命令。下面就来看一下<code>git rm</code>的用法。我们来把 fire 2.txt 这个文件从版本库中也删除掉，直接使用 <code>git rm file2.txt</code>。然后来查看一下仓库的状态，可以看到和 file1样， file2 也被删除了。而且我们再来使用 <code>ls</code>看一下 file2.txt 这个文件在工作区中也被删除了。再来看一下暂存区中的内容，可以看到我们只是执行了一次 <code>git rm</code> 命令， git 就把这个文件从工作区和暂存区同时删除掉了。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8712.png" alt="图片12"></p>
+<p>最后非常重要的一点就是要记得提交，否则删除的文件在版本库中还是存在的。那我们来提交一下<code>git commit -m &quot;delete file1.txt&quot;</code>。这样 file1和 file2 这两个文件就从版本库中被删除掉了。</p>
+<table>
+<thead>
+<tr>
+<th><code>rm file;git add file</code></th>
+<th>先从工作区删除文件，然后再暂存删除内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git rm &lt;file&gt;</code></td>
+<td>把文件从工作区和暂存区同时删除</td>
+</tr>
+<tr>
+<td><code>git rm --catched &lt;file&gt;</code></td>
+<td>把文件从暂存区删除，但保留在当前工作区中</td>
+</tr>
+<tr>
+<td><code>git rm -r *</code></td>
+<td>递归删除进入的某个目录下的所有子目录和文件</td>
+</tr>
+<tr>
+<td><code>git commit -m &quot;delete file3.txt&quot;</code></td>
+<td>删除后不要忘记提交</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gitignore-文件">.gitignore 文件</h2>
+<p>ignore 是忽略的意思，那这个文件的作用也就是可以让我们忽略掉一些不应该被加入到版本库中的文件，这样可以让我们的仓库体积更小，更加干净。那么哪些文件是不应该被纳入到版本库中的？一般来说我们应该遵循下面这几个原则。
+第一个就是一些系统自动生成的文件，比如一些工具或者软件产生的临时文件。</p>
+<p>第二个就是编译生成的一些中间文件、可执行文件等等。也就是如果一个文件是通过另一个文件自动生成的，那自动生成的这个文件就没有必要放到版本库里面。比如 Java 编译生成的. class 文件，其语言编译生成的.o 文件。</p>
+<p>第三个就是系统运行过程中自动生成的一些文件，比如日志文件、缓存文件、临时文件等等。
+最后一个也是非常重要的一点，就是我们带有敏感信息的一些配置文件，这些文件里面如果包含用户名、密码、 Token 的话，一定不要放到版本库里面。那这些信息如果被别人知道的话，可能会造成一些不必要的损失。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8713.png" alt="图片13"></p>
+<p>所以我们一般都会把这些文件都忽略掉。.gitignore 文件的规则也非常简单，我们可以在这个文件中列出需要忽略的文件的模式，这样这些文件就不会被提交到版本库中。</p>
+<p>下面我们来看一个实际的例子，我们先来创建一个 access.log来模拟一下我们的日志文件<code>echo &quot;some log&quot; &gt; access.log</code>。那现在如果我们什么都不做的话，这个文件就会被纳入到版本控制中。而我们继续使用 <code>git add</code>，然后再 commit 提交的话，那 access .log 这个文件就会被提交到我们的版本仓库里面。那为了对比我们在创建第二个日志文件<code>echo &quot;other log&quot; &gt; other.log</code>，可以看到我们现在有两个日志文件，那现在我们添加一个 .gitignore文件。我们把 access.log 添加到.gitignore 这个文件里面<code>echo access.log &gt; .gitignore</code>。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8714.png" alt="图片14"></p>
+<p><code>cat .gitignore</code>可以看到这个文件里面只有一行内容，就是 access.log 的文件名。然后我们再来使用第一个 status 来看一下。可以看到现在只能看到 other 点 log 这个文件，而 access 点 log 这个文件已经看不到了，这样我们就忽略了 access.log 文件。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8715.png" alt="图片15"></p>
+<p>我们来看一下，我们使用<code> git add .</code>把所有的修改都添加到暂存区。然后我们来提交一下<code>git commit -m &quot;ignore file sample&quot;</code>。来看一下我们仓库中的文件<code>git status</code>，可以看到 other.log 这个文件已经被我们添加到了版本库里面，而 access.log 这个文件却没有被添加进来，这样我们就成功的忽略了 access.log这个文件。那在实际使用中，我们一般会忽略所有的日志文件，我们也可以使用<code>*.log</code> 这样的通配符来匹配所有以log 结尾的文件。
+那我们现在来修改一下.gitignore，<code>vi .gitignore</code>，我们在下面加上一行<code>*.log</code>。表示我们忽略所有的以 log 结尾的文件。然后我们再来添加一个日式文件<code>echo hello &gt; hello.log</code>，再使用<code>git status</code>来看一下状态，可以看到我们现在只能看到.gitignore 这个文件的修改，而 hello.log 的修改被我们忽略掉了，然后我们再来提交一下。
+然后我们再来看一下我们版本库中的文件<code>git ls-files</code>，可以看到 hello.log 这个文件也是没有被添加进来的，表示我们新的 log 成功的适配了所有的. log 结尾的文件。这里有一个需要提醒各位同学注意的地方，就是我们已经把 other.log 这个文件添加到仓库里面了，那我们现在如果对 other.log 这个文件做一些修改的话，Git还会不会监测到它的版本变化？比如我们在other.log 文件里面追加一些内容<code>echo “modified” &gt;&gt; other.log</code>，两个右箭头在 Linux 命令里面表示追加到这个文件的后面。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8716.png" alt="图片16"></p>
+<p>那我们现在使用<code> git status</code> 来看一下它的状态， git 还是提示我们 other.log 这个文件发生了变化。而且我们使用<code>git diff</code>这个命令也是可以看到它的变化内容的。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8717.png" alt="图片17"></p>
+<p>这里稍微解释一下， .gitignore 文件生效需要有一个前提，就是这个文件不能是已经被添加到版本库中的文件。因为我们是先把 other.log 这个文件添加到了版本库中，然后才修改的.gitignore 文件。所以现在我们的.gitignore 文件对 other.log 是没有作用的，因为它已经被添加到了版本库中，那这个时候我们就需要把 other.log 这个文件先从版本库中先删除掉，这就使用到了我们上一节课学过的<code>git rm</code> 命令。大家回忆一下，如果这样执行的话<code>git rm other.log</code>，那<code>git rm</code>命令会把文件从工作区和暂存区同时删除，也就是执行了这一行命令之后我们本地的文件也会被删除掉。如果我们只是想把它从版本库里面删除，而不想删除本地文件的话，就可以在后面加上<code>--catch</code>这个参数。然后我们来看一下仓库的状态，它提示我们 other.log 这个文件已经被删除了。然后我们再来看一下本地文件，可以看到它在本地还是没有被删除的，这就是刚刚 catch 的这个参数的作用。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8718.png" alt="图片18"></p>
+<p>那现在我们再来提交一下，这样以后无论这个文件发生了什么变化，就都不会被纳入到版本控制中了。比如我们在文件中再追加一些内容<code>echo “some change” &gt;&gt; other.log</code>，可以看到我们的仓库是没有任何变化的。那.gitignore 文件中还可以配置文件夹的名称。
+比如这里我们创建一个 temp 文件j夹<code>mkdir temp</code>，用来存放一些临时文件。这里也有一个小知识点和大家说明一下，如果 temp文件夹下面什么都没有的话。，这个文件夹是不会被纳入到版本控制中的。因为 git 默认是不会将空的文件夹添加到仓库里面的。这个时候如果我们使用 <code>git status</code> 命令，也是看不到任何变化的。但是如果temp文件夹下面有文件的话，这个文件夹就会被纳入到版本控制中。比如我们来添加一个hello到temp/hello.txt<code>echo &quot;hello&quot; &gt; temp/hello.txt</code>，可以看到我们现在仓库的状态发生了变化。我们再来使用 <code>git status -s </code>这个命令，来看一下常规的状态。<code>-s</code> 是short的缩写，表示查看状态这个命令的简略模式。这个命令的回显最前面有两个问号儿，这里的两个问号第一列表示是暂存区的状态，第二列表示工作区的状态。然后<code>vi ,gitignore</code>我们在.gitignore 文件中添加temp文件夹的名称<code>temp/</code>，这样我们就忽略了 temp 文件夹。注意文件夹的格式是以斜线结尾的，这样才能正确的忽略文件夹。我们保存退出，然后再来看一下仓库的状态，可以看到temp文件夹已经被忽略掉，不显示了，那这里的M表示我们的.gitignore 文件被修改过，然后我们来提交一下<code>git commit -am &quot;test ignore folder&quot;</code>，然后我们看一下仓库的文件内容，可以看到 temp文件夹以及它下面的所有文件并没有被提交到我们的仓库里面。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8719.png" alt="图片19"></p>
+<p>关于匹配规则，这里简单说明一下。.gitignore 这个配置文件是按行从上到下进行规则匹配的。忽略文件的匹配规则在 Git 官网上有详细的说明，来简单看一下。首先所有以井号开头的行表示注释，我们可以使用标准的 glob模式匹配，它会递归地应用在整个工作区中，那所谓的 glob模式就是指 shell 所使用的简化了的正则表达式。比如星号表示匹配多个字符，问号匹配单个字符，被中括号括起来的部分表示匹配任何一个在方括号里里面的字符。比如方块a，b， c 表示要么匹配一个a，要么匹配一个b，要么匹配一个c。使用两个星号表示匹配任意的中间目录。如果在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配。比如[0-9]表示匹配所有 0- 9 的数字。[a-z]表示匹配任意的小写字母。那么感叹号表示取反，要忽略指定模式以外的文件或者目录，可以在模式前加上感叹号就，可以了。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8720.png" alt="图片20"></p>
+<p>下面是一个实际的忽略文件的例子：</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8721.png" alt="图片21">第一条规则表示忽略所有的.a 文件。第二条规则表示在第一条规则的基础上，我们虽然忽略了所有的.a 文件，但是要保留 lib.a 不忽略掉。第三条规则表示只忽略当前目录下的/TODO文件，而不忽略所有子目录下的TODO文件。因为我们在规则的最前面加上了斜线来表示根目录。
+那第4条规则表示我们会忽略任何目录下的 build 文件夹。再往下面这一条规则表示忽略 doc 文件夹下的所有的以txt 结尾的文件，但是不会忽略 doc 下面的子目录下面的 txt 文件。那最后这一条规则就表示我们会忽略所有 doc 目录下，以及它下面的所有子目录下的.pdf结尾的文件。
+最后再给大家一个小提示，在 GitHub 上提供了各种常用语言的微文件的模板，在新建仓库的时候，我们可以直接使用，也可以根据自己的需要进行修改。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8722.png" alt="图片22"></p>
+<h2 id="github注册与远程仓库">Github注册与远程仓库</h2>
+<p>说起远程仓库的话，就不得不提到 GitHub 是一个非常流行的代码托管平台，世界上超过 90% 的开源项目都托管在 GitHub 上。那我们今天就来学习一下如何使用 GitHub 来管理我们的代码。那首先就是来看一下如何注册一个 GitHub 的账号。 GitHub 的注册非常简单，点击右上角的 sign up 按钮就可以了，那按照提示我们一步一步来操作一下，我们输入邮箱密码和用户名之后点击继续。这里，它提示我们是否要接收它推送给我们的一些邮件。我们点击no。然后需要做一个简单的验证，这样再来一次，那验证通过之后点击创建账户。
+这里需要到我们刚刚填写的邮箱里面去搜一下验证码，我们输入验证码之后来到下一个页面这里，他询问我们是多少个人的团队。 just me。
+然后点击继续，然后看到一个炫酷的飞越宇宙的星空的画面之后，我们的注册就基本完成了。</p>
+<h2 id="github使用和远程仓库操作">Github使用和远程仓库操作</h2>
+<p>这就是 GitHub 的主界面，左上角有一个搜索框，可以在里面搜索我们想要的仓库。比如我们来搜索一下Linux，就可以找到 Linux 的源码仓库，我们点进来看一下。这就是大名鼎鼎的 Linux 开源项目的仓库主页.</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8723.png" alt="图片23"></p>
+<p>如果大家感兴趣的话，可以点一下右上角的这个 code 按钮，然后就可以克隆或者下载这个仓库了。左上角这里显示的是这个仓库的分支和Tab。这个我们后面会讲到。右面列出了这个仓库的一些概要信息，包括发布的版本数，贡献者，使用的主要语言等等。可以看到 Linux 已经有超过 14000 多名贡献者了。那第一个就是李纳斯托尔兹。这就是 Git Hub 的一个简单介绍，下面就来看下如何在 Git Hub 上创建一个我们自己的仓库。</p>
+<p>点击一下左上角的LOGO，回到我们的主页。下面有一个绿色的创建仓库的按钮。点击这个按钮就可以新建一个仓库了。我们需要来填写一下仓库的名称，如我们就叫remote-repo。下面是一个可选择仓库的描述，比如我们就叫my first repo。再下面是选择仓库的可见性，如果公开的话，就所有人都可以看到我们的仓库源码。再往下是选择是否初始化一个 read me 文件，这个文件是用来介绍我们的仓库的，这个也是可选的，如果不选的话，后面可以手动添加。再往下是选择是否创建一个 target ignore 文件，就是我们上一讲到的忽略文件。那再下面就是开源许可证的文件，这里我们也暂时先不选择。然后点击最下面的新建仓库按钮，就可以创建一个新的仓库了。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8724.png" alt="图片24"></p>
+<p>创建完成之后就跳转到了我们仓库的主页面， GitHub 给了我们一些提示，让我们知道如何把本地的仓库和这个远程仓库关联起来。第一个方法是如果我们本地没有仓库的话，可以先在本地创建一个仓库。然后按照这里它提示我们的命令，就可以把本地仓库和这个远程仓库关联起来。第二个方法就是如果我们本地已经有了一个仓库的话，应该如何操作？最后一个是提示我们还可以导入其他的仓库，比如可以将原本使用 SVN 或者其他平台的一些仓库导入进来。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8725.png" alt="图片25"></p>
+<p>这几种方式我们后面都会讲到，因为有一些命令大家还没有学习到，比如这里的分支和 push 操作等等，所以大家简单看一下就好。然后大家注意一下，这里有两个按钮，一个是 HTTPS，一个是SSH，那这是远程仓库地址的两种方式，它们有一点小区别。 HTTPS 开头的这种方式在我们把本地代码 push 到远程仓库的时候，需要验证用户名和密码，而 git 开头的这种方式使用的是SSH协议。这种方式在推送的时候不需要验证用户名和密码，但是需要在 GitHub 上添加 SSH 公钥的配置。这种也是比较推荐的方式，更加安全，也更加方便。而且在 2021 年8月 13 日以后， HTTPS的这种方式已经被 GitHub 停止使用了，所以这里推荐大家使用 SSH 的方式。</p>
+<p>我们点击 URL 右面的按钮，复制一下仓库的地址。然后回到本地，使用 git 克隆命令，加上仓库的地址来克隆一下我们的仓库。可以看到报错了，它提示我们请确认是否有正确的访问权限。这是由于我们还没有配置 SSH 密钥导致的，使用 SSH 方式必须要配置 SSH 的密钥，那我们现在来看一下如何。
+配置。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8726.png" alt="图片26"></p>
+<p>首先回到我们的用户根目录<code>cd</code>，然后进入到.ssh这个目录<code>cd .shh</code>。然后我们使用<code>ssh-keygen -t rsa -b 4096</code>这个命令来生成我们的 SSH 密钥，后面加上<code>-t</code>指定协议为RSA，再加上<code>-b</code>指定生成的大小为4096。然后回车之后它提示我们需要输入密钥的文件名称。这里大家需要注意一下，如果你是第一次使用这个命令的话，那么直接回车就可以了。它会在我们用户根目录的点儿 SSH 目录下生成一个 id_rsa的密钥文件。但是如果你也像我一样之前已经配置过 SSH 密钥了，那这个时候最好不要直接回车。因为我们之前已经生成过id_rsa这个密钥文件。如果再次回车的话，它会覆盖掉我们之前的密钥文件，而且这个操作是不可逆的。所以这里我们需要输入一个新的文件名，比如test，然后回车。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8727.png" alt="图片27"></p>
+<p>然后输入密码，这样我们的密钥生成操作就完成了。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8728.png" alt="图片28"></p>
+<p>来看一下我们本地的目录<code>ls -ltr</code>，刚刚的操作生成了两个新的文件，一个 test 和 test .pub。没有任何扩展名的这个 test 就是私钥文件。test.pub 结尾的这个文件就是公钥文件。我们需要打开公钥文件<code>vi test.pub</code>，然后复制一下公钥文件的内容。
+回到GitHub页面，点一下右上角的头像，在弹出菜单里面最下面有一个settings，点击一下，在页面左侧有一个 SSH 和 GPG 密钥配置的选项。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8729.png" alt="图片29"></p>
+<p>在页面右侧有一个新建 SSH 密钥的按钮，我们点击一下这个按钮，然后把刚刚复制的公钥内容粘贴到下面的输入框中。标题这里输入一个任意的名字，然后点击页面下面的添加 SSH 密钥这个按钮，我们就成功的把公钥添加到GitHub 上了。
+回到命令行终端，如果你是第一次创建 SSH 密钥，而且在创建密钥的时候也没有修改过默认的文件名的话，SSH 密钥的配置到这里就完成了。那如果你也像我一样，刚刚指定了一个新的文件名，那么还需要增加一步配置<code>tail -5 config</code>，我们需要创建一个 config 文件，并把下面这 5 行内容添加到文件里面。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8730.png" alt="图片30"></p>
+<p>这个配置文件的意思是当我们访问 GitHub . com 的时候，指定使用 SSH 下的 test 这个密钥，然后我们回到本地仓库，再来执行一下<code>git clone</code>命令。这里它提示我们需要输入密码，也就是刚刚我们创建 SSH 密钥的时候，指定输入的密码。那我们来输入一下。<code>ls</code>可以看到克隆命令执行成功了，那这个命令的意思就是把远程仓库克隆到本地，克隆完成之后，我们就可以看到本地多了一个<code>remote repo</code>的目录，我们进入到这个目录里面，发现我们的提示符变成了绿色，表示这是一个 git 仓库。然后我们再来添加一个文件<code>echo hello &gt; hello.text</code>。添加到暂存区，再提交一下。再使用<code>git ls-files</code>来看一下我们的仓库状态。可以看到我们仓库里确实多了一个文件，但这只是我们本地仓库的状态，并没有提交到远程仓库中。回到我们的 Git Hub 页面，刷新一下，可以看到我们远程仓库还是空的，没有任何的文件。
+这里稍微解释一下。我们从第一节课就了解到， Git 是一种分布式的版本控制系统。我们的本地仓库和远程仓库是两个仓库，它们之间是相互独立的。我们可以在本地仓库中做任何修改，但是这些修改并不会影响到远程仓库。同样，远程仓库的修改也不会影响到我们本地仓库，因此我们需要一种机制来同步本地仓库和远程仓库的修改内容，让他们的状态保持一致。那这个同步的过程就涉及到 Git 中两个新的命令，push和pull。这两个命令的含义和他们的名字一样，非常的形象，一个表示推送，一个表示拉取。 push 就是把本地仓库的修改推送给远程仓库，pull就是把远程仓库的修改拉取到本地仓库。
+刚刚我们在本地仓库新建了一个文件，但是这个文件并没有同步给远程仓库。下面就使用 push 命令来把本地仓库的修改内容推送给远程仓库<code>git push</code>。推送命令执行成功了。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8732.png" alt="图片32"></p>
+<p>打开远程仓库的页面，control shift R刷新一下。可以看到 hello.txt这个文件已经推送到了 GitHub 上，我们点击一下这个链接，可以看到文件的内容也更新了。</p>
+<table>
+<thead>
+<tr>
+<th>生成SSH Key</th>
+<th><code>ssh-keygen -t rsa -b 4096</code><!-- raw HTML omitted -->私钥文件：id_rsa<!-- raw HTML omitted -->公钥文件:id_rsa.pub</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>克隆仓库</td>
+<td><code>git clone repo-address</code></td>
+</tr>
+<tr>
+<td>推送更新内容</td>
+<td><code>git push &lt;remote&gt; &lt;branch&gt;</code></td>
+</tr>
+<tr>
+<td>拉取更新内容</td>
+<td><code>git pull &lt;remote&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>那如果我们本地已经有了一个仓库的话，怎样才能把它放到远程仓库里面呢？</p>
+<h2 id="本地仓库放到远程仓库">本地仓库放到远程仓库</h2>
+<p>这节课我们就来学习一下。首先我们还是需要在 GitHub 上创建一个新的仓库。仓库名称我们就叫first-epo 好了。下面这些选项我们暂时都不须要勾选。然后点击创建仓库按钮，这样我们远程仓库就创建好了。我们点击 URL 右侧的复制按钮来复制一下仓库的地址，然后回到我们的命令行<code>cd learn-git</code>看一下本地仓库<code>ls</code>。在之前的课程中，我们创建过一个叫做 my-repo 的本地仓库，那现在我们就来把 my-repo 这个本地仓库和刚刚在 GitHub 上创建的远程仓库关联起来。那其实 GitHub 已经给了我们提示了，在这一部分，它提示我们需要使用 <code>git remote add &lt;shortname&gt; &lt;url&gt;</code> 这个命令。它的意思就是添加一个远程仓库，这里的 origin 就是我们远程仓库的别名，一般默认的别名都是这个<code>git remote add origin XXXXXX</code>，当然我们也可以自己指定一个其他的名字。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8733.png" alt="图片33"></p>
+<p>把这一行复制一下，然后回到我们的命令行。执行完成之后，再使用 <code>git remote -v</code> 这个命令来查看一下。这个命令的意思就是可以查看我们当前仓库所对应的远程仓库的别名和地址，可以看到我们现在本地仓库所对应的远程仓库别名叫做origin，后面就是它所对应的远程仓库的地址。</p>
+<p>那第二行的命令<code>git branch -M main</code>的意思是指定分支的名称为main，因为我们这里默认的分支名称就是main，所以这一行命令我们可以省略掉。
+最后一行命令<code>git push -u origin main</code>的意思就是把我们本地的 main 分支和远程的 origin 仓库的 main 分支关联起来。其实这个命令的全称应该是这样写的：<code>git push -u origin main:main</code> <code>-u</code> 是 upstream 的缩写，它的意思就是把我们本地仓库和别名为 origin 的远程仓库关联起来，后面的<code>main:main</code>就是把本地仓库的 main 分支推送给远程仓库的main 分支。如果本地分支的名称与远程分支的名称相同的话，我们就可以随便只写一个main 就可以了。回车之后它会提示我们输入密码，那我们来输入一下。</p>
+<p>命令执行成功了，我们再来回到页面上刷新一下，可以看到我们本地仓库的内容已经成功地推送到了远程仓库里面。点击文件的链接可以看到文件的内容。同样的，如果我们在远程仓库修改了一些内容，那么就需要使用pull命令来把远程仓库的修改拉取到本地。
+我们来看一下远程仓库的页面。
+GitHub 上的文件是可以直接在线编辑的，比如我们可以在这里添加一个新的文件，来模拟一下远程仓库的修改。那这里大家不要误解，这个修改过程并不是一定要在 GitHub 上进行的，比如其他人可以在本地修改了之后，再把修改内容推送到远程仓库里面。我们这里只是为了演示方便，所以直接在GitHub上修改来模拟这个过程。大家注意看一下页面，这里有一行提示是说我们可以添加一个 read me 文件，来帮助对我们仓库感兴趣的人们更好的了解我们的项目。那我们就来添加一个readme文件，点这个绿色按钮就可以了。 read me 文件是一个 Markdown 格式的文件， Markdown 是一种轻量级的标记语言，它的语法格式非常简单，在 Git 仓库中， readme 文件还有一个特殊的作用，就是当我们访问一个仓库地址的时候，这个仓库的首页就会显示这个 readme 文件中的内容。
+这样我们就可以在这个文件中添加一些项目的介绍，项目的使用说明、项目的开发者信息等等。然后页面滚动到下面，点击一下提交按钮，再来刷新一下页面，能够看到文件已经成功地提交到了远程仓库里面。而且我们的仓库首页也已经显示了我们刚刚添加的内容。那现在远程仓库中已经有了一个新的文件，而我们的本地仓库还没有这个文件，这个时候我们就需要使用pull命令来拉取一下远程仓库的修改内容。
+pull命令后面也是加上一个远程仓库的名称和分支的名称<code>git pull &lt;远程仓库名&gt; &lt;远程分支名&gt;:&lt;本地分支名</code>，这里面仓库的名称和分支的名称可以省略，如果省略的话，默认就是拉取仓库别名为 origin 的 main 分支。它的作用就是把远程仓库的指令分支拉取到本地再进行合并。可以看到我们本地多了一个readme.md 的文件。表示我们的本地仓库已经成功地拉取了远程仓库的修改内容。这个md 的后缀名表示这是一个 Markdown 文件，我们可以 cat 一下<code>cat READMW.md</code>，这个文件的内容和远程仓库的内容是一样的。
+执行 <code>git pull</code>的时候需要注意的一点就是，在执行完<code> git pull</code> 之后， Git 会自动为我们执行一次合并操作。如果远程仓库中的修改内容和本地仓库中的修改内容没有冲突的话，那么合并操作就会成功，否则合并操作就会由于冲突而失败。
+这个时候我们就需要手动来解决一下冲突。从远程仓库获取内容还可以使用 fetch 命令<code>git fetch</code>，它们的区别在于 fetch命令只是获取远程仓库的修改，但是并不会自动合并到本地仓库中，而是需要我们手动合并。现在由于我们还没有学习分支相关的内容，所以<code>git pull</code>之后产生冲突的问题，以及如何使用 fetch 来获取远程仓库的修改内容。这些内容等到后面我们学习分支的时候，再来详细的为大家讲解和演示。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8734.png" alt="图片34"></p>
+<h2 id="代码托管平台gitee和gitlab">代码托管平台gitee和gitlab</h2>
+<p>Gittee 和 GitLab 都是比较。流行的代码托管平台，虽然流行程度比不上 GitHub，但是这两个平台都有自己的一些特点，比如码云主要考虑它是国内的平台。GitHub 有的时候在国内的访问速度相对来说还是比较慢的。那如果我们的项目是面向国内的话，就可以考虑使用码云来的托管项目。而 GitLab 这里主要是想介绍一下它的私有化部署。也就是说我们可以搭建属于自己的 GitLab 服务器，然后我们的项目就可以在这个服务器上进行管理。
+主要适合有一些企业对于代码的安全性要求比较高，不允许使用GitHub 或者Gitee这种公有代码托管平台的这样的场景。首先我们来看一下Gitee的使用。Gitee 的中文名称叫马云，它的注册过程也非常简单，这里我们就不演示了。登录之后点击右上角的头像，在账号设置，这里可以设置我们的SSH 公钥。设置的过程和Github也是相同的，我们可以通过右上角的加号来创建一个新的仓库。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8735.png" alt="图片35"></p>
+<p>创建的过程和 Git Hub 也基本相同，稍微有些不同的是 Gibi 在创建仓库的时候只能选择私有仓库。我们可以在创建完成之后在设置里面把它设置为公开仓库。点击下面的创建按钮之后仓库就创建完成了。然后我们可以在仓库的首页看到仓库的地址，复制地址之后就可以在本地使用这个克隆命令来克隆这个仓库了。那我们来执行一下。可以看到执行也是没有问题的，关于 Gitee 的使用我们就简单介绍到这里，接下来我们再来看一下GitLab 的使用。</p>
+<p>GitLab 的官网是这里，中文名称叫极狐，用户注册、添加 SSM 虚拟钥和创建仓库等过程和 Git up 都基本相同，这里我们就不演示了，重点来看一下 GitLab 的私有化部署。
+所谓的私有化部署就是我们可以在自己的服务器上部署一个 GitLab 代码托管服务。那老师这里是使用Docker 部署在了自己电脑本地，部署的过程可以参考 GitLab 的官方文档部署过程。由于部署本课程的重点，这里就不演示了。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8736.png" alt="图片36"></p>
+<p>我们来看一下私有仓库的使用。启动服务之后，我们可以在浏览器中输入<code> localhost</code> 来访问我们的 GitLab 服务。那输入用户名和密码之后，我们就可以进入到GitLab的首页了。登录之后，我们可以在右上角的个人头像弹出菜单里面找到偏好设置这个选项，在里面可以找到语言设置。在本地化这里可以把我们的语言设置成中文，这样 GitHub 的界面就会和我一样变成中文的了。
+我们也可以在这里添加一个SSH密钥。这个过程和GitHub也是一样的。为了节省时间，老师这里已经提前添加好了，我们重点来看一下如何在私有化的Gitlab服务器上创建一个仓库。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8737.png" alt="图片37"></p>
+<p>我们可以在右上角的加号里面找到新建项目，这里选择创建空白项目。项目标识就。使用local-gitlab。那输入项目标识和项目的可见性级别。
+然后选择新建项目，这样我们就成功创建了一个空的仓库，点击克隆按钮的复制链接地址，复制一下我们仓库的地址，然后在命令行执行一下git clone命令。克隆也是成功的。我们也可以把本地一个已经存在的仓库推送到 GitHub 服务器上。比如我们选择之前创建的 my-repo 这个仓库， 我们可以使用<code>git remote -v</code>这个命令来查看它目前关联的远程仓库的地址，也可以使用<code>git remote add</code>这个命令来添加新的远程仓库，后面加上仓库的别名和地址。
+回车之后我们再次使用这个<code>git remote -v</code>来查看一下，可以看到，除了原本关联到 Git Hub 上的origin之外，我们现在又多了一个名字叫 GitLab 的远程仓库，它所对应的地址就是刚刚我们在GitLab 上创建的仓库地址。也就是说，我们现在的 Myrepo 这个本地仓库同时关联了公有 Git Hub 和 私有的GitLab。那现在比如说我们在本地修改了一些文件提交之后，在执行推送的时候，我们可以使用 git push 后面不加任何参数来推送到 GitHub 上，因为我们的本地仓库默认关联的是 Git Hub。
+那也可以使用 <code>git push gitlab main</code>来推送到我们私有的 GitLab 上。当然如果愿意的话，我们还可以再加一个码云上面的远程仓库，原理也是一样的。我们再回到页面刷新一下。那可以看到我们 my-repo。仓库里面的内容就都提交到我们本地的 GitLab 上了。</p>
+<h2 id="分支">分支</h2>
+<p>到目前为止，我们已经学习了 Git 的基本命令以及远程仓库的使用。那后面我们会涉及到 Git 中一个非常重要的概念，就是分支。为了让大家更加形象的理解分支，我们有必要在学习分支之前，先来学习一下 Git 的一些图形化工具和一些常用的 IDE 中如何来使用Git。图形化工具的话，大家可以到 Git 的官网上看一下，在下载页面点击这里的GUI客户端。下面我们就来看一下这些工具的使用，以及它们之间的一些对比。
+GitHub Desktop 是 GitHub 官方出品的图形化工具，它与 GitHub 整合的比较好，它的界面比较简洁，使用起来也比较方便。但是功能非常的单一，只能用来管理 GitHub 上的仓库。一些高级功能比如分支管理等等都支持的不是特别好。如果你只是想要一个简单的图形化工具，而且只是想要管理GitHub 上的仓库的话，那么 GitHub Desktop 的功能是基本够用的。
+接下来我们看一下Sourcetree。Sourcetree是由 Atlassian公司出品的一款免费的 GUI 工具。Sourcetree同样也支持 Windows 和 Mac 操作系统。接下来我们看一下 GitKraken。
+GitKraken是由 Axosoft 出品的一款商用版的图形化工具，它也提供了免费的个人使用版本。但是免费版本的功能有限。比如你的仓库如果关联了私有仓库，那么免费版本是无法使用的，支持 Windows 和Mac。这家公司还提供一款叫做Gitlens的 vscode 扩展，可以在 vscode 中使用图形化的功能。它还提供 Git 和 JIRA 的机场，但是这些功能都分为免费版和收费版。那最后我们来总结一下，如果你使用 GitHub 比较多，而且只想要一个简单的图形化工具，那么 GitHub Desktop是够用的。如果想要一个功能强大的图形化工具，那么Sourcetree和GitKraken都是不错的选择。后续的课程中，我们偶尔也会使用一些 GUI 工具来演示 Git 的一些图形化功能，这样看起来比较直观，也更加容易。
+理解。</p>
+<h2 id="在-vscode-中使用git">在 Vscode 中使用Git</h2>
+<p>我们还是先来简单介绍一下 Vscode 的一些基本功能。 Vscode 是一款功能强大、免费开源、可扩展、跨平台的轻量级编辑器，为开发人员提供了高效、便捷、舒适的开发体验。我们可以在官网下载它的安装程序，安装过程也非常简单，一路下一步就可以了。这里可以根据操作系统来下载对应的安装程序 。</p>
+<p>vscode还支持直接从命令行启动，我们可以在仓库的目录<code>cd learn-git</code> <code>cd my-repo</code> 下面输入<code>code .</code>，意思就是使用 Vscode 打开当前目录。这里需要注意一下，命令行启动的功能并不是安装完之后默认就开启的，需要稍微配置一下，可以在 vscode 的查看菜单栏下面找到命令面板这个选项快捷键是 command shift和 p 键。Windows的话是 control shift 和 p 键。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8738.png" alt="图片38"></p>
+<p>打开命令面板之后，输入 path 找到这个选项，在 pass 中安装 code 命令，我们点击它之后， vscode 会自动把我们的 code 命令添加到系统的环境变量中。然后我们就可以在命令行中使用 code 命令来启动 Vscode 了。</p>
+<p>启动之后，首先我们来了解一下 Vscode 的界面。最上面是菜单栏，包括文件编辑、终端等等菜单，这个和平时我们使用的其他软件是一样的。右侧的这一块区域是侧边栏，这里集成了一些常用的功能。这里需要提醒一下。Vscode 默认是把这个侧边栏放到左侧的。老师这里，因为个人习惯把它放到了右侧，这个也是可以通过Vscode 的设置来修改的。方法也是使用刚刚的命令面板，快捷键是 command shift p 键，然后在这里输入setting，找到这个选项“打开用户设置”。我们在命令面板中输入一些关键字之后， Vscode 会自动帮我们过滤出一些相关的选项，然后我们直接选择想要的内容就非常的方便。这个功能大家以后也会经常用到，所以建议大家记住这个快捷键。另外， Vscode 为我们过滤出的选项还会按照一定的顺序来排列。这个顺序是根据我们的使用频率来决定的，每个人的顺序可能不太一样，所以大家。在自己电脑上看到的顺序可能和我这里的顺序也是不太一样的。点击用户设置之后， Vscode 会自动帮我们打开一个json文件，这个文件里面存储了所有Vscode的设置内容，我们可以修改这个文件的内容默认行为。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%87%E8%A1%A5%E5%85%851.png" alt="图片补充1"></p>
+<p>为了和大家的版本保持一致，我们把侧边栏也改成左侧，保存之后就可以看到我们的侧边栏已经。侧边栏的功能有很多，这里面有几个图标，如果大家刚刚安装好 Vscode 的话，图标可能会比老师这里少几个，因为下面这几个图标是安装扩展之后才出现的。鼠标放到每一个图标上面会有对应的提示来告诉我们这一栏是干什么。点击不同的图标之后，侧边栏的内容也会根据图标发生变化。</p>
+<p>第一个图标是我们的资源管理器，和 Windows 操作系统的。资源管理器功能基本相同。</p>
+<p>第二个图标是搜索和替换，可以在这里搜索和替换我们想要的内容。</p>
+<p>第三个图标是源码管理器，也是本节课重点要讲解的内容，稍后我们详细来讲。</p>
+<p>第四个图标是调试器，可以在这里运行或者调试我们的程序。</p>
+<p>下一个图标是扩展，可以在这里安装一些插件来扩展Vscode的功能。比如我们可以搜索Git，会找到很多和 Git 相关的插件，比如从之前我们提过GitLens就是在这里安装的。直接点击扩展右面的安装按钮就可以安装了。下面这几个图标都是安装扩展之后添加到侧边栏上了。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8740.png" alt="图片40"></p>
+<p>右侧就是我们的编辑和显示区域，可以在这里编辑我们的代码。在 Vscode 中也集成了终端的功能，是这一块区域。如果大家这里没有显示的话，可以在上面终端的菜单里面点击新建终端来打开一个新的终端。也可以使用快捷键 <code>control+Shift+` </code>，这个反引号在我们键盘左上角 Esc 键的下面。</p>
+<p>好了，终于介绍完了 Vscode 的基本界面，下面重点来看一下 Vscode 里边，而且就是分支的指标。可以在源码管理器中看到仓库的状态，修改一下文件，保存。保存之后就可以看到源码管理器的图标上面多了一个数字的角标1，表示我们的仓库中有一个更改内容。那如果我们再来修改一个其他文件。<code>control+s</code>保存，那这个数字的角标就会变成圈2，表示我们的仓库有2个更改内容。点击这个图标就会定位到我刚刚修改过文件。点击这个文件，就可以看到这个文件的具体修改。其实这个比较的差异内容就是我们之前讲过的<code>git diff</code>命令输出结果，这样看起来的话要比命令行加加减减直观一些。在文件名的右侧有 4 个小图标，第一个图标表示打开文件，点击之后就会打开对应的文件。</p>
+<p>第二个图标表示放弃更改，点击之后就会丢弃这个文件还没有提交的更改内容。比如我们来点击一下。可以看到我们刚刚添加的那一行内容已经不见了，这文件又恢复到了我们修改之前的状态。</p>
+<p>第三个图标表示添加到暂存区，也就是我们之前所学习的<code>git add</code>的命令，点一下加号之后，这个文件就会从更改列表消失变成暂存的更改。</p>
+<p>最后这个图标表示了当前文件的状态，这里的 M 表示这个内容被修改过了。其他状态还有 A 和 D 表示新建的文件和已经删除的文件，和我们使用 <code>git status</code> 命令看到的结果是一样的。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8741.png" alt="图片41"></p>
+<p>比如我们可以使用VScode来新建一个文件。资源管理器右面同样有一些快捷的操作按钮，比如这个按钮就表示新建一个文件。可以点击这里的选择语言来设置语言种类。 vscode会使用对应的语言包来进行语法高亮和代码提示。比如这里我们输入一个html，然后在文件中输入一个 <code>html:5 </code>的标签，按下 Tab 键就会按照HTML5的语法格式来自动补全文档的内容。然后我们来保存一下这个文档。
+保存之后就可以在源码管理器中看到这个文件.右侧的U表示这个文件当前处在一个未被跟踪的状态。回到我们的源码管理器，这个文件显示在未跟踪的更改下面，表示这是一个新增软件。可以点击加号把它添加到暂存区，那对应的文件的状态也由未跟踪变成了添加到暂存区，而且文件的状态也变成了A，表示这是一个新建的文件，同样的我们也可以来删除一个文件，比如把这里的file4再删除掉。然后暂存一下，可以看到 file4 的状态已经变成了D，表示这是一个已经被删除掉的文件。</p>
+<p>在 Vscode 中的提交操作也非常方便，就是上这个蓝色的提交按钮，按钮上面的输入框就是我们的提交信息，也就是使用 <code>git commit -m</code> 后面添加的内容，然后点击提交按钮，我们的代码就可以提交到本地仓库中了。接下来这个按钮变成了同步更改，而提示我们是否需要把这个提交推送到远程仓库。如果点击的话，就直接推送到远程默认的 origin/main 分支，那这里的上箭头表示推送操作。如果远程仓库有更新的内容的话，这里它也会提示我们。这个箭头就会变成一个下箭头。同步一下，好的，以上就是我们在 Vscode 中使用 Git 的一些基本操作。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8742.png" alt="图片42"></p>
+<h2 id="git的分支branch">Git的分支（Branch）</h2>
+<p>分支是 Git 中一个非常重要的功能，我们可以把它看作是代码库中的不同版本。可以独立存在，并且有自己的提交记录。就像是一棵树的不同枝干。每个枝干都有自己的生长轨迹，所以被形象地称之为分支。分支非常适合团队协作和开发管理，比如多个开发人员可以在自己的分支上进行开发工作，最后再合并到主线代码库中，我们也可以在一个分支上进行新功能的开发，或者建立一个问题修复的分支来处理一些 bug 和缺陷。这样就可以让主线代码仓库处于一个随时可用的比较稳定的状态，而不会影响到其他功能的开发和测试，保证了项目的正常运行和高效协作。
+分支的优点就是能够提高团队协作的效率。减少冲突和错误的影响，让团队中的每个人都能够独立开发和测试。接下来我们就来一起看一下 Git 中分支的一些基本操作。我们来创建一个新的项目。首先我们来创建一个 branch Demo 的文件夹，然后来初始化一个仓库。为了更好的演示和让我们更加清楚地看到分支的变化，仓库中的文件名和提交记录我们都以最简单的方式来命名。我们使用分支名加序号来命名文件；使用分支名加冒号加序号的方式来编写提交记录，这样看起来更加直观和容易理解。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8743.png" alt="图片43"></p>
+<p>然后我们使用GitKraken来打开仓库，这样就可以看到每次执行命令之后的变化。
+GitKraken中也集成了终端的功能，可以直接在这里输入命令。比如我们先来创建一个main1.txt<code>echo main1 &gt; main1.txt</code>，表示这是 main 分支的第一个文件。然后提交一下。提交消息，使用<code>git commit -m &quot;main:1&quot;</code>表示这是 main 分支的第一次提交。提交完成之后，在上面我们就可以看到图形化的提交记录。
+同样的方式再来创建两个文件<code>echo main2 &gt; main.txt</code>，这样我们的仓库中就有了三次提交。我们可以通过<code> git branch</code> 命令来查看当前仓库的所有分支。在 GitKraken界面中的这个位置也可以看到分支的情况。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8744.png" alt="图片44"></p>
+<p>其他工具比如 vscode 也有类似的功能。在命令行的回显中，前面带有星号的就是我们目前所处在的分支。到目前为止，我们的仓库中只有一个分支，也就是 main 分支，也是默认分支。在之前的课程中提到过，在 Git 早期的版本中，默认分支的名字是master，但是由于这个词带有种族歧视的含义，所以在后来的版本中就改成了main。</p>
+<p>在实际的开发过程中，我们的项目经理会把不同的功能分配给不同的开发人员。比如说我们的项目经理把一个新的开发任务分配给我们，这也就是我们使用分支的一个场景，我们可以使用<code> git branch</code> 后面加上分支名来创建一个新的分支<code>git branch dev </code>。或者也可以点击 git branch 界面上的这个位置的分支按钮，然后输入新的分支的名字也是一样的。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8745.png" alt="图片45"></p>
+<p>那现在我们可以看到这个新的分支已经创建完成了。可以在这个分支上进行开发和测试。这里需要注意的是， <code>git branch</code> 命令只是创建了一个新的分支，并没有切换到这个新的分支上。我们使用 <code>git branch</code> 命令再来查看一下。可以看到当前还是处在main分支上。所以我们还需要切换到刚刚新建的开发分支上，可以使用<code> git checkout 分支的名称</code>来切换到不同的分支。
+下面我们就来切换到 div 分支上<code>git checkout dev</code>，可以看到我们的命令提示符已经变成了div。GitKraken 界面，这里前面对号也变成了div,表示现在我们处于 div 分支上。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8746.png" alt="图片46"></p>
+<p>这里需要稍微提示一下的是，使用<code>git checkout</code>命令来切换分支的时候，可能会存在一些潜在的问题，因为除了切换分支和状态之外， git checkout 命令还可以用来恢复文件或者目录到之前的某一个状态，比如我们可能意外的修改了某一个文件。那这个时候我们就可以使用 <code>git checkout</code> 命令来恢复到我们修改之前的状态。而这个时候如果分支名称和文件名称相同的话，就会出现歧义， <code>git checkout</code> 命令会默认切换分支，而不是恢复文件。为了避免这种歧义，git 官方在2.23 版本开始为我们提供了一个新的命令， <code>git switch</code> 命令，它是专门用来切换分支的，语义更加明确。我们可以使用 <code>git switch main</code> 来试一下，可以看到也成功地切回到了 main 分支，我们再切回dev<code>git switch dev</code>。然后就可以在这个 dev 分支上进行开发和测试了。
+比如我们在 dev 分支新建一个 dev1的文件<code>echo dev1 &gt; dev1.txt</code>，然后来提交一下。为了显示的更加清楚，我们再来新建一个文件<code>echo dev2 &gt; dev2.txt</code>。假设我们现在所有的开发功能都完成了，而主线分支中的代码还没有变化，我们切回来看一下<code>git switch main</code>。在切换分支的时候，工作区的文件也会发生变化。可以看到切回 main 分支之后， dev分支的内容就都不见了，这是因为我们在 dev 分支上进行了修改，而这些修改还没有合并到 main 分支中，所以 main 分支中的文件内容还是之前的内容(dev分支有之前main分支的内容)。再来切换一下，大家看得更加清楚一点。那现在这个提交的图可能不太明显，是因为我们 main 分支还没有发生任何变化，那我们现在在 main 分支也来增加几次提交来看一下<code>echo main4 &gt; main4.txt</code> <code>echo main5 &gt; main5.txt</code> <code>git add</code> <code>git commit</code>。
+可以看到现在 main 分支和 div 分支已经分叉了，可以很清楚地看到我们执行每一步提交操作时分支的变化。在实际工作中，这样的情况也是非常常见的，因为开发任务一般都是并行进行的，所以我们的分支也是并行的。那现在假如测试完成没有问题之后，我们就需要把这个dev功能的分支合并到主线代码中。我们可以使用<code>git merge</code>命令来将不同的分支合并到当前分支中。 merge 后面的分支名称是将要被合并的分支，而我们当前所在的分支就是合并后的目标分支<code>git merge dev</code>。
+比如说我们要把 dev分支合并到 main 分支中的话，就需要首先切换到 main 分支，然后执行 <code>get merge dev</code> 命令，这样就可以把 dev 分支合并到 main 分支中了。那回车来执行一下这个命令。
+回车之后 git 会自动为我们产生一次提交，我们需要输入提交的消息，直接使用默认的提交信息保存。在 Gecko 的分支图上可以看到 deal 分支和 main 分支已经合并了，他也非常形象地展示了分支合并的过程。其实这个分支图就是我们提交记录的一个可视化的展示。在命令行中也可以通过 <code>git log</code> 来查看我们的分支图<code>git log --graph --oneline --decorate --all</code>。可以看到虽然没有 GitKraken中那么美观，但是这个分支图也能清楚地展示出分支的合并过程。
+合并完成之后，我们再来使用<code>git branch</code> 命令来看一下。可以看到这个 dev分支还是存在的。这里有的同学可能会有一些误解，认为分支被合并之后就会消失掉。其实如果我们不手工删除这个分支的话，它还还是会存在的。如果一个分支不再需要了，就可以使用 <code>git branch -d dev</code>命令来删除这个分支。
+这里的<code>-d</code> 参数表示删除已经完成合并的分支。意思就是如果一个分支已经被合并到其他分支中了，那么我们就可以使用这个命令来删除这个分支。但是如果没有被合并的话，是不能使用这个小 d 参数来删除的。这个时候就需要使用<code>git branch -D branch-name</code>来强制删除这个分支。执行完成之后，我们再来使用 <code>git branch</code> 来查看一下分支列表。可以看到第5分支已经被删除了。
+最后我们需要谈一谈 Git 分支的最佳实践。为了保障分支管理的顺畅和有效，我们需要制定明确的分支管理流程和规范，同时加强分支的保护和权限控制，避免常见的分支管理错误。在后面的课程中，我们也会详细介绍这一部分的内容。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8747.png" alt="图片47"></p>
+<h2 id="分支解决冲突">分支解决冲突</h2>
+<p>这节课我们来学习一下合并分支的时候如何解决冲突。在上一节课，我们学习了如何合并分支。一般情况下，如果两个分支的修改内容没有重合的部分的话，那么合并分支就非常简单， Git 会为我们自动完成合并。但是如果两个分支修改了同一个文件的同一行代码。Git 就不知道应该保留哪个分支的修改内容了，也就产生了冲突。这个时候就需要我们手动来解决冲突。首先我们来看一个合并冲突的例子，我们还是使用上一节课的仓库。新建一个分支feat<code>git branch feat</code>。</p>
+<p>分支的命名其实也是有一定规则和含义的， feat 就是 feature 的缩写，一般用来表示开发某一个功能的分支。然后我们切换到 feat分支<code>git switch feat</code>，我们来修改一下main1.txt 与文件中的内容，比如来添加一行，这是 feat 分支中添加的内容。
+保存之后我们来提交一下提交信息，我们使用 feat:1表示，这是 feat 分支的第一次提交。这里有一个小技巧，就是在提交命令后面加上<code>-a</code> 参数，就可以一个命令完成添加暂存和提交两个动作<code>git commit -a -m &quot;feat:1&quot;</code>。然后我们切换回 main 分支<code>git switch main</code>，我们在 main 分支里面也同样修改一下这个文件中的内容。
+注意看，当切换回main分支之后，工作区的文件内容也自动发生了变化，刚刚在 feat 分支添加的内容就消失不见了<code>cat main1.txt</code>。因为在 main 分支中，我们还没有对这个文件进行修改。所以切换回 main 分支之后。git 自动为我们把工作区的内容也恢复了。那下面我们来修改一下这个文件。同样也在第2行加上一句话。然后同样也来保存提交一下，这里<code>-a -m</code> 也可以省略成 <code>-am</code>。
+这个时候就可以看到 feat 分支和 main 分支的修改内容产生了分歧。那现在我们来尝试合并一下分支。输入 <code>git merge feat </code>来把 feat 分支的内容合并到。
+main分支。
+回车之后 git 就会提示我们产生了冲突，自动合并失败了，需要解决冲突之后再提交。现在我们也可以使用 git status 命令来查看一下冲突文件的列表。也可以使用 <code>git diff</code> 命令来查看冲突的具体内容。 git 会把两个分支的修改内容全都显示出来，然后 Git 会使用左箭头等号儿和右箭头儿分别来表示两个分支的修改内容。其中等号儿上面的部分表示我们刚刚 main 分支中的修改内容，而等号儿下面到右箭头儿之间的部分是我们刚刚在 feat 分支中添加的内容。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8748.png" alt="图片48"></p>
+<p>那现在我们需要做的就是需要手工编辑这个文件，留下我们想要的内容之后。然后再重新提交。那现在我们来编辑一下这个文件<code>vi main.txt</code>。
+我们把左箭头等号儿和右箭头儿就去掉，把第二行的内容合并到第一行后面，然后我们来添加一个逗号，这样我们就把两个分支的修改内容合在了一起。我们修改好合并后的内容之后保存退出。然后再来添加暂存，然后来提交一下。可以看到提交之后就自动完成了我们合并的过程。那在提交之前如果想中断这次合并的话，我们也可以使用<code>git merge --abort</code> 这个命令来终止合并。好，那以上就是一个最简单的在合并分支时解决冲突的一个过程。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8749.png" alt="图片49"></p>
+<h2 id="heading"></h2>
+<p>在上一节课中，我们学习了如何使用merge 操作来合并不同的分支。除了 merge 以外，还有另外一个方法可以将不同分支的修改内容整合到一起，就是rebase，中文意思是变基<code>git rebase branch-name</code>。下面就来看一下怎样使用Rebase，以及在什么情况下应该使用Rebase。</p>
+<p>首先大家来看这张图，回忆一下，之前在执行合并操作的时候，是先使用 checkout 或者switch命令来切换到 main 分支，然后执行 <code>git merge dev</code> 命令，就可以将 dev 分支合并到 main 分支上，合并完成之后的结果就是 main 分支上会多出一个提交记录，然后两个分支就像两条溪流一样汇聚到了一起。
+我们是在 main 分支上执行的合并操作。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8750.png" alt="图片50"></p>
+<p>那么如果使用 Rebase 的话，是不是也必须要在main分支上执行？其实不是的，我们可以在任意分支上执行 Rebase 操作，可以在dev 分支上，也可以在 main 分支。那还是刚刚的例子，如果我们在 dev 分支上执行 Rebase 操作的话，结果就是这样的， dev 分支的两次提交记录就都会变基到 main 分支上，而在 main 分支上执行的话，结果就是这样的， main 分支的两次提交记录就会变基到dev分支的末尾。执行 rebase 之后，最后的结果都是一条直线，但是中间的顺序会稍微有些不同，这是由于 rebase 的机制导致的。</p>
+<p>在 Git 中，每个分支都有一个指针。指向当前分支的最新提交记录。而在执行 rebase 操作的时候，Git 会先找到当前分支和目标分支的共同组先，这里也就是 main3 这个提交节点，再把当前分支上从共同组先到最新提交记录的所有提交都移动到目标分支的最新提交后面。</p>
+<p>简单来说，就是像嫁接移植一样，从分叉点把整个分支都移动到目标分支的最新提交记录后面。那大家再回过头来看一下这个图就可以理解了。如果我们在第5分支上执行 Rebase 操作，就找到dev分支和 main 分支共同的祖先，也就是 main3，然后找到 main 分支上最新的提交记录也就是main5，移动到 main 分支最新提交记录的后面，最后就形成了这样的结果。</p>
+<p>而如果在 main 分支上执行 Rebase 操作的话，就找到 main 分支和dev分支共同的祖先，也还是这个 main3 这个提交节点，然后把 main 分支上从共同祖先到最新提交记录的所有提交内容，也也就是main4 到main5 这一段都移动到dev分之的最新提交，也就是第 52 这个提交对象后面，那么就形成了这样的结果。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8751.png" alt="图片51"></p>
+<p>下面我们来视频演示一下 Rebase 操作。打开 GitKraken，进入到之前创建的这个 branch-demo 的仓库中。为了方便大家理解，我们先来将仓库恢复到执行 merge 之前的状态，也就是 main:5这次之前的提交。git 的一个优点就是我们可以随时随地的将仓库恢复成我们想要的状态。
+之前因为上一节课演示合并冲突的时候，新建了一个 feat 分支，那我们先将这个 feat 分支删除掉，避免它干扰我们的演示。执行 <code>git branch -d feat</code>命令就可以了。
+还有在之前合并完成之后，我们已经把 dev 分支删除掉了，那么现在就需要把它恢复回来，可以执行<code> git checkout -b dev  deal:2这次提交的提交ID</code> ，这样就可以恢复到这个分支的这一时间点的状态，那这个提交 ID 可以在 GitKraken 中看到，如果没有的话就在标题中点一下右键，然后选中这个 Sha 就可以看到提交 ID 了。也可以在命令行中使用 <code>git log </code>命令来查看，就是之前我们也输入过<code>git log --oneline --graph --decorate --all</code>，也可以看到这个提交ID。</p>
+<p>这里有个小窍门，就是这个命令太长了，每次都输入这么长的命令实在是有点麻烦。可以使用 alias 命令来将它定义成一个别名。这里我们将它定义成graph。我们来把后面这个命令 copy 一下，<code>alias graph=&quot;git log --oneline --graph --decorate --all&quot;</code>这样以后我们就可以直接使用 graph 命令来查看图形化的提交记录了。然后我们再切换回 main 分支，因为 main 分支也需要回退到合并之前的 main:5 这次提交的状态，可以使用 reset 命令来将我们的仓库回退到某一个时间点<code>git reset --hard 某个ID</code>。
+这样仓库的状态就恢复到了我们之前合并操作之前的状态了。为了演示两次不同的 rebase 操作，我们先来把这个仓库复制一下。<code>cp -rf branch-demo rebase1</code> <code>cp -rf branch-demo rebase1</code>cp这个命令是 Linux 下面用来复制文件夹的。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8752.png" alt="图片52"></p>
+<p>那我们在 rebase1这个目录里面来执行我们第一个rebase 命令。
+那回顾一下第一个 rebase 命令，我们需要切换到dev分支，然后变基到main。那首先我们来切换到dev分支，然后执行一下<code> git rebase main</code> 命令，意思就是将当前的 dev 分支变基到目标的main分支上。执行完成之后就可以看到 GitKraken 中的提交记录已经变成了一条直线了。 dev 分支的两次提交记录都已经变基到了 main 分支的最后面。和刚刚我们在图里面看到的是一样的。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8753.png" alt="图片53"></p>
+<p>那下面再来看一下如果在 main 分支上执行 rebase 操作的结果。我们打开 rebase2 这个仓库，因为现在已经在 main 分支下了。那么我们就直接执行。注意看这里意思是将当前分支 main 变基到目标分支 dev 上，执行完成之后就可以看到我们的提交记录也是一条直线，但是这一次 main 分支的两次提交记录都编辑到了dev分支的最后面。那我们rebase的演示就结束了，相信大家对 rebase 操作也有了一定的了解。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8754.png" alt="图片54"></p>
+<p>那 rebase 和 merge 有什么区别？应该如何选择和区分使用呢？我们先来看一下这两条面临各自的优缺点。<code> git merge</code> 的优点是不会破坏原分支的提交记录，所有提交记录和合并历史都会保留下来，方便后续的查看和回滚。那缺点就是会产生额外的提交记录，和两条分支线的合并会使得提交记录变得复杂。</p>
+<p>而 <code>git rebase</code> 的优点就是不需要新增额外的提交记录到目标分支，可以形成一个线性的提交历史记录，非常的直观和干净。那 Rebase 的缺点也非常明显，就是会改变提交历史。因此避免在一个共享分支上进行 rebase 操作，因为这样可能会对和你一起在这个分支上进行开发的同事造成一些困扰。所以一般不会在公共的分支上执行 rebase 操作。那了解了这两个命令的优缺点之后，我们应该如何选择和区分使用呢？其实这也是一个见仁见智的问题，没有一个绝对的标准。
+一般来说，如果你只是想把两个分支合并起来，而不关心提交历史的话，那么就可以使用。<code>git merge</code> 命令。如果你确定只有你自己在一个分支上开发，并且希望提交历史更加的清晰明了，那么就建议使用 rebase 命令。</p>
+<h2 id="git分支工作流模型">Git分支工作流模型</h2>
+<p>这节课我们来看一下 Git 分支管理中的一些工作流模型。所谓工作流模型，就是一些比较好的规范和流程，可以让我们的工作更高效，更有条理。那大家现在看到的这张图就是一个比较常用和流行的工作流模型，叫做 GitFlow 模型。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8755.png" alt="图片55"></p>
+<p>它将分支分成了 5 种类型，每种类型都有自己的用途。最左边这一列是主线分支，也叫基线分支，就是我们常常说的 main 分支或者master 分支。主线分支是项目的核心分支，它包含了项目的最新稳定版本的代码。我们应该随时保证主线分支中的代码是可发布的。
+一般来说，主线分支的代码会被部署到生产环境中，主线分支中的代码是不允许直接修改的，只能通过合并分支的方式来修改。
+每次合并分支都建议生成一个新的版本号，这样可以方便追踪和回溯，可以通过 <code>git tag</code> 命令来标记版本号。版本号的规则一般也是有规定的，那这就是一个比较常见的版本号规则，包括主版本、次版本和修订版本。主版本号一般用来表示主要的功能变化或者重大的更新。次版本号表示一些新的功能改进和更新，但是通常不会影响现有的功能。修订版本一般是修复一些小的问题或者缺陷，以及一些安全漏洞的补丁等等，通常不会影响现有的功能和接口。</p>
+<p><img src="https://goody-good.github.io/img/learngit/%E5%9B%BE%E7%89%8756.png" alt="图片56"></p>
+<p>那第二列就是我们的问题修复分支问题修复分支包含了项目某个问题修复的源码，用于修复线上的问题。一般来说，问题修复分支是从主线分支中分离出来的，修复完成后会合并到主分支和开发分支中。当问题修复分支合并完成之后，一般会将这个问题修复分支删除掉，而问题修复分支也一般也会更新我们的小版本号。
+接下来先看一下我们的开发分支，就是图中绿色的这部分，它是从主线分支中分离出来的，包含了项目的最新开发版本的代码，用于开发和测试。开发分支也是项目的核心分支，和 main 分支一样，是一个长期存在的分支。那开发分支右侧黄色的这些就是我们的功能分支。功能分支一般是指包含了项目某个新功能的代码，用于开发新的功能，它们都是从开发分支中分离出来的，当功能分支的代码稳定后，会以某种方式合并回开发分支中。比如大家看这里这个 feature login 配置就是一个功能分支，用于开发登录页面的功能分支中应该只包含登录页面相关的功能代码，等到开发完成后，合并回开发分支中。
+然后再按照版本发布的计划执行版本发布的流程。
+那这就涉及到我们下一个版本发布的分支，也叫预发布分支，这个分支包含了项目最新预发布版本的代码，用于发布前的测试和验证。一般来说，预发布分支是从开发分支中分离出来的，当预发布分支的代码稳定后，会合并到主分支和开发分支中。
+比如大家看这里，在一点儿， 0 版本发布之前，会创建一个预发布分支，用于测试和验证，在测试验证的过程中发现的问题会在预发布分支中进行修改、提交，并且 terrpick 到开发分支中。当预发布分支的代码稳定后，会合并到主分支和开发分支中，然后会将预发布分支删除掉。那这些不同种类的分支中，按照生命周期的不同，又可以分成两种类型，就是主要分支和辅助分支。主要分支包括主分支和开发分支。
+这两个分支是项目的核心分支，一般都是长期存在的。其他三种分支都属于辅助分支，在完成各自的功能之后就可以删除掉了。另一种比较流行的工作流模型是 Git Hub flow 模型。
+由于刚刚的 Git flow 模型对于大部分的开发人员和团队来说可能稍微有些复杂，并且在实际使用中很多人并不会完全遵循 Git flow 的模型。 Git flow 模型适用于团队技术水平适中，有一定的开发流程和规范的团队，而 Git Hub 的 flow 模型则适用于一些技术水平比较高的团队或者开源项目。
+相对于 Git flow 模型， Git Hub flow 模型真的可以说是简单明了，只有一个长期存在的主分支，而且主分支上的代码是可以直接部署到生产环境中的，那一般会设置分支保护，禁止团队成员直接在主分支上进行提交，团队成员们可以从组分支中分离出自己的分支进行开发和测试，然后在本地分支提交代码。等到开发完成之后，可以发起一个 pull request，简称PR，中文名也叫拉请求，或者叫合并请求。团队成员们可以对代码进行review评审。
+如果没有问题，就可以将这个 PR 发布和合并到主分支中，整个流程就完成了。
+在 GitLab 中也有类似的功能，叫做merge request，简称MR。
+此外，还有一些良好的习惯和规范可以让团队写作更加高效，比如分支的命名规范、分支的创建规范、分支的合并规范等等。在命名方面，应该使用带有意义的描述性的名称，比如版本发布应该根据版本号命名，功能性分支应该根据其功能和任务命名。 feature login page 就是一个比较好的命名规范。
+修补补丁和错误应该根据其问题编号命名，这样可以让其他人更容易理解和识别分支的作用。在分支创建方面，定期合并成功验证的分支，及时删除已经合并的分支，保持合适的分支数量，确保及时将功能性分支合并回主分支，为分支设置合适的管理权限都是非常好的习惯。</p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://goody-good.github.io/tags/cover-image/">cover image</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://goody-good.github.io/2015/06/welcome-to-tranquilpeak-0.5.3-beta/" data-tooltip="Welcome to Tranquilpeak 0.5.3-BETA" aria-label="PREVIOUS: Welcome to Tranquilpeak 0.5.3-BETA">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://goody-good.github.io/2023/11/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://goody-good.github.io/2023/11/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://goody-good.github.io/2023/11/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/goody-good.github.io\/2023\/11\/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/';
+        
+          this.page.identifier = '\/2023\/11\/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2023 Firstname Lastname. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://goody-good.github.io/2015/06/welcome-to-tranquilpeak-0.5.3-beta/" data-tooltip="Welcome to Tranquilpeak 0.5.3-BETA" aria-label="PREVIOUS: Welcome to Tranquilpeak 0.5.3-BETA">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://goody-good.github.io/2023/11/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://goody-good.github.io/2023/11/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://goody-good.github.io/2023/11/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgoody-good.github.io%2F2023%2F11%2Fgit%25E5%25AD%25A6%25E4%25B9%25A0%25E7%25AC%2594%25E8%25AE%25B0%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fgoody-good.github.io%2F2023%2F11%2Fgit%25E5%25AD%25A6%25E4%25B9%25A0%25E7%25AC%2594%25E8%25AE%25B0%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgoody-good.github.io%2F2023%2F11%2Fgit%25E5%25AD%25A6%25E4%25B9%25A0%25E7%25AC%2594%25E8%25AE%25B0%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/d09dc2d7aa5c467519e8af89f7b3d94c?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Firstname Lastname</h4>
+    
+      <div id="about-card-bio">Super bio with markdown support <strong>COOL</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Your job title
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        France
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://goody-good.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://goody-good.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
